@@ -15,16 +15,12 @@ interface IProps {
 
 const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
 
-  
   const [error, setError]=useState<any>({});
   const [authObj, setAuthObj] = useState<any>({})
-
-  
 
   const handleChange=(name:string,value:string)=>{
     setAuthObj({...authObj, [name]:value})
   }
-
 
   const checkErrorFun = () => {
     String(authObj.email)
@@ -42,7 +38,6 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
         setError({ email: "Please enter correct email to continue" });
   }
 
- 
   useEffect(()=>{
     
     setError({});

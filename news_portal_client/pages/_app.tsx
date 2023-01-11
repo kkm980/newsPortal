@@ -1,0 +1,36 @@
+import '../styles/globals.css'
+import type { AppProps } from 'next/app'
+import { Provider } from 'react-redux';
+import { store } from '../store'
+import { useEffect, useState } from 'react';
+import 'tailwindcss/tailwind.css'
+
+import LoaderScreen from '../components/general/loaderScreen';
+import NavBar from '../components/general/NavBar';
+
+export default function App({ Component, pageProps }: AppProps) {
+
+  const [isFetching, setIsFetching] = useState(false);
+  const [isOpen, setOpen] = useState(false);
+  useEffect(() => {
+    console.log(isFetching, "isdfgh")
+  }, [isFetching])
+
+  return <Provider store={store}>
+    <div className='h-screen font-inter flex flex-col overflow-x-hidden 
+    overflow-y-auto hide-scrollbar relative bg-[white]'
+    onClick={()=>{setOpen(false)}}
+    >
+
+      {isFetching ? <LoaderScreen /> : <></>}
+
+      {/* <NavBar {...{isOpen, setOpen}}/> */}
+      <div className='mt-[80px]'>
+        <Component {...{ pageProps, setIsFetching }} />
+      </div>
+
+
+    </div>
+
+  </Provider>
+}

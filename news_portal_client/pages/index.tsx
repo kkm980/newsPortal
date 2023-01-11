@@ -21,6 +21,64 @@ const Home: React.FC<IProps> = () => {
         <link rel="image" href="/assets/Thanos.jpg" />
       </Head>
       <main>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+        <div className='text-[black]'>gfhjkl</div>
+
       </main>
     </>
   )

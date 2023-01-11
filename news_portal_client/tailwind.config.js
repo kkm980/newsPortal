@@ -9,15 +9,27 @@ module.exports = {
   },
   theme: {
     screens: {
-      'sm': { 'max': '450px' },
-      'md': { 'max': '800px' },
-      'lg': { 'max': '1130px' },
-      'xl': { 'max': '1550px' },
-      'xllg': {'max':"1350px", 'min':'800px'}
+      'sm': { 'max': '600px' },
+      'md': { 'max': '720px' },
+      'lg': { 'max': '1200px' },
+      'xl': { 'max': '1600px' },
+      'xsm':{'min':'220px', 'max':'450px'}
+      
     },
     extend: {
       fontFamily: {
-      abc:[ 'Sofia Sans', 'sans-serif']
+      abc:[ 'Sofia Sans', 'sans-serif'],
+      title: ['Roboto', 'sans-serif'],
+      subTitle: ['Roboto', 'sans-serif']
+      },
+      fontSize: {
+        'subTitleFont': ['16px', '19px'],
+        'titleFont': ['30px', '35px'],
+        'inputFont':['14px', '16px']
+      },
+      fontWeight: {
+        'subTitle': '400px',
+        'title': '700px',
       },
     },
   },

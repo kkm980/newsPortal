@@ -17,7 +17,7 @@ export default function App({ Component, pageProps }: AppProps) {
   }, [isFetching])
 
   return <Provider store={store}>
-    <div className='h-screen font-inter flex flex-col overflow-x-hidden 
+    <div className='h-screen m-0 p-0 font-inter flex flex-col overflow-x-hidden 
     overflow-y-auto hide-scrollbar relative bg-[white]'
     onClick={()=>{setOpen(false)}}
     >
@@ -25,7 +25,7 @@ export default function App({ Component, pageProps }: AppProps) {
       {isFetching ? <LoaderScreen /> : <></>}
 
       {/* <NavBar {...{isOpen, setOpen}}/> */}
-      <div className='mt-[80px]'>
+      <div className='mt-[0px] m-0 p-0'>
         <Component {...{ pageProps, setIsFetching }} />
       </div>
 

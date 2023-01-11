@@ -27,25 +27,19 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
 
 
   const checkErrorFun = () => {
-    if (
-      String(authObj.email)
-        .toLowerCase()
-        .match(
-          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        )
-    ) {
-       if(authObj.password!=""){
-        authFun(authObj);
-       }
-       else{
-        setError({password:"Please enter password to continue"});
-       }
-    }
-    else{
-      
-      setError({email:"Please enter correct email to continue"});
-    }
-
+    String(authObj.email)
+    .toLowerCase()
+    .match(
+      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+    )
+      ?
+        authObj.password != ""
+      ?
+        authFun(authObj)
+      :
+        setError({ password: "Please enter password to continue" })
+      :
+        setError({ email: "Please enter correct email to continue" });
   }
 
  
@@ -128,16 +122,14 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
          ${((!authObj.email)||(!authObj.password))?"cursor-not-allowed":"cursor-pointer"}
          ${((!authObj.email)||(!authObj.password))?"bg-[gray]":"bg-[#2F80ED]"}
        `}
-       onClick={(e:any)=>{
-        e.preventDefault();
-        checkErrorFun();
-
-       }}
-       >
-          { authStat==="signup"?"Signup":"Login now"}
-        </div>
-        
+        onClick={() => {
+          authObj.email && authObj.password ? checkErrorFun() : <></>
+        }}
+      >
+        {authStat === "signup" ? "Signup" : "Login now"}
       </div>
+
+    </div>
 
 
   )

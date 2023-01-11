@@ -1,10 +1,8 @@
 import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 import 'tailwindcss/tailwind.css'
-import React, { useEffect, useState, useContext } from 'react'
 
+import React, { useEffect, useState, useContext } from 'react'
 
 import { useCreateTeamMutation, useGetUsersQuery } from '../app/services/APISlice'
 
@@ -13,7 +11,7 @@ import { useCreateTeamMutation, useGetUsersQuery } from '../app/services/APISlic
 interface IProps {
     setIsFetching:any
 }
-const inter = Inter({ subsets: ['latin'] })
+
 const Login: React.FC<IProps> = ({setIsFetching}) => {
     // const [searchParams] = useSearchParams()
     // const navigate = useNavigate()

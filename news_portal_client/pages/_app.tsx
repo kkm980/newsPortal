@@ -6,29 +6,23 @@ import { useEffect, useState } from 'react';
 import 'tailwindcss/tailwind.css'
 
 import LoaderScreen from '../components/general/loaderScreen';
-import NavBar from '../components/general/NavBar';
 
 export default function App({ Component, pageProps }: AppProps) {
 
   const [isFetching, setIsFetching] = useState(false);
-  const [isOpen, setOpen] = useState(false);
   useEffect(() => {
     console.log(isFetching, "isdfgh")
   }, [isFetching])
 
   return <Provider store={store}>
     <div className='h-screen m-0 p-0 font-inter flex flex-col overflow-x-hidden 
-    overflow-y-auto hide-scrollbar relative bg-[white]'
-    onClick={()=>{setOpen(false)}}
-    >
-
+    overflow-y-auto hide-scrollbar relative bg-[white]'>
+      
       {isFetching ? <LoaderScreen /> : <></>}
 
-      {/* <NavBar {...{isOpen, setOpen}}/> */}
       <div className='mt-[0px] m-0 p-0'>
         <Component {...{ pageProps, setIsFetching }} />
       </div>
-
 
     </div>
 

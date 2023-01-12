@@ -20,7 +20,8 @@ module.exports = {
       fontFamily: {
       abc:[ 'Sofia Sans', 'sans-serif'],
       title: ['Roboto', 'sans-serif'],
-      subTitle: ['Roboto', 'sans-serif']
+      subTitle: ['Roboto', 'sans-serif'],
+      navLogo:['Raleway']
       },
       fontSize: {
         'subTitleFont': ['16px', '19px'],

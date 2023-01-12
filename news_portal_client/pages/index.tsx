@@ -6,6 +6,7 @@ import 'tailwindcss/tailwind.css'
 import React, { useEffect, useState, useContext } from 'react';
 
 import { useCreateTeamMutation } from '../app/services/APISlice'
+import { NavBar } from '../components'
 
 
 interface IProps {}
@@ -21,7 +22,7 @@ const Home: React.FC<IProps> = () => {
         <link rel="image" href="/assets/Thanos.jpg" />
       </Head>
       <main>
-      
+      <NavBar/>
       </main>
     </>
   )

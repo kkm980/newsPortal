@@ -6,7 +6,7 @@ import React, { useEffect, useState, useContext } from 'react'
 
 
 import { useCreateTeamMutation, useGetUsersQuery } from '../app/services/APISlice'
-import AuthBox from '../components/auth/AuthBox'
+import {AuthBox} from '../components'
 
 // import { useNavigate, useSearchParams } from 'react-router-dom'
 
@@ -72,10 +72,10 @@ const Auth: React.FC<IProps> = ({setIsFetching}) => {
             </Head>
 
             <main>
-                <div className={`w-full h-[100vh] P-0 m-0 
+                <div className={`w-full h-[100vh] 
                 flex justify-between md:justify-center items-center md:bg-no-repeat md:bg-cover md:bg-center
                 md:bg-[url('/assets/auth_bg_img.png')]`}>
-                  <div className={`w-[50%] h-[100vh] P-0 m-0  border border-text bg-no-repeat bg-cover bg-center
+                  <div className={`w-[50%] h-[100vh] bg-no-repeat bg-cover bg-center
 		            bg-[url('/assets/auth_bg_img.png')] block md:hidden`}>
                         {/* <Image src="/assets/auth_bg_img.png" alt="image" width={100%} height="100vh"/ */}
                         {/* <img src="/assets/auth_bg_img.png" alt="image" className='w-[100%] h-[100vh] md:object-cover'/> */}

@@ -61,19 +61,24 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
         <div className="font-subTitle font-[400px] bg-[white] text-[#444444] text-subTitleFont">
           Email
         </div>
-        <div className="font-subTitle font-normal bg-[white] sm:bg-transparent
-           text-[red] text-[14px] absolute top-[25px] sm:top-[80px] left-[15px] sm:left-[0px]">
+        <div className="font-subTitle font-normal bg-[white] xsm:bg-transparent
+           text-[red] text-[14px] absolute top-[25px] xsm:top-[80px] left-[15px] xsm:left-[0px]">
           {error.email}
         </div>
       </div>
-      <input className={`w-[350px] xsm:w-[80%] h-[50px] p-2 px-4 my-2 mt-3
+      <input className=
+        {`w-[350px] xsm:w-[80%] h-[50px] p-2 px-4 my-2 mt-3
          outline-none rounded rounded-[5px] border 
-          bg-[white] text-[black] text-inputFont font-subTitle ${error.email ? "border-[red]" : "border-[#E8E8E8]"}`}
+         text-inputFont font-subTitle bg-[white]
+          ${error.email ? "border-[red]" : "border-[#E8E8E8]"}
+          ${error.email ? "text-[red]" : "text-[black]"}
+        `}
+
         type="email"
         name="email"
         value={authObj.email}
         onChange={(e: any) => {
-          setError({});
+          setError({...error,email:""});
           handleChange(e.target.name, e.target.value);
         }}
       />
@@ -91,7 +96,7 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
         name="password"
         value={authObj.password}
         onChange={(e: any) => {
-          setError({});
+          setError({...error,password:""});
           handleChange(e.target.name, e.target.value);
         }}
       />
@@ -122,7 +127,7 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
       >
         {authStat === "signup" ? "Signup" : "Login now"}
       </div>
-      
+
     </div>
 
   )

@@ -25,8 +25,15 @@ const TitleNews_smallScreen: React.FC<IProps> = () => {
          bg-no-repeat bg-cover bg-center bg-[url('/assets/newsBigPic.png')] drop-shadow-[5px_10px_50px_rgba(0,0,0,0.11)]
            cursor:pointer
          `}>
-        {/* <div>ddfdfdf</div> */}
-          {/* <img src="/assets/newsBigPic.png" className='absolute top-[0px] left-0 w-[870px] h-[400px] border border-[red] object-fill'/> */}
+             <div className='max-w-[280px] text-[16px] bg-transparent font-title font-bold
+             text-[#F8F8F8] absolute bottom-[36px] left-[12px]'>
+                News Title Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet
+            </div>
+
+            <div className='text-[8px] bg-transparent font-title font-normal
+             text-[#F8F8F8] absolute bottom-[15px] left-[10px]'>
+                2 Hours Ago
+            </div>
           
         </div>
       </div>

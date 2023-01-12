@@ -22,12 +22,19 @@ const TitleNews: React.FC<IProps> = () => {
           <div className='mb-[24px] text-headingFont font-[700] font-title text-[black] bg-[white] lg:text-[38px]'>Hot Topics</div>
           {/* <div className='text-titleFont font-[700] font-title text-[#2F80ED] bg-[white]'>Wednesday 29 Dec'</div> */}
         {/* </div> */}
-        <div className={`w-[100%] max-w-[870px] h-[400px] xl:max-w-[650px] xl:h-[300px] rounded rounded-[8px] text-[black]  
-         bg-no-repeat bg-cover bg-center bg-[url('/assets/newsBigPic.png')] drop-shadow-[5px_10px_50px_rgba(0,0,0,0.11)]
-           
-         `}>
-        {/* <div>ddfdfdf</div> */}
-          {/* <img src="/assets/newsBigPic.png" className='absolute top-[0px] left-0 w-[870px] h-[400px] border border-[red] object-fill'/> */}
+        <div className={`relative w-[100%] max-w-[870px] h-[400px] xl:max-w-[650px] xl:h-[300px] rounded rounded-[8px] text-[black]  
+         bg-no-repeat bg-cover bg-center bg-[url('/assets/newsBigPic.png')] drop-shadow-[5px_10px_50px_rgba(0,0,0,0.11)] cursor-pointer
+        `}>
+            
+            <div className='max-w-[545px] xl:max-w-[450px] text-[32px] xl:text-[27px] lg:text-[18px] bg-transparent font-title font-bold
+             text-[#F8F8F8] absolute bottom-[65px] left-[65px] xl:bottom-[40px] xl:left-[40px]'>
+                News Title Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet Lorem Ipsum Dolor Sit Amet
+            </div>
+
+            <div className='text-[12px] bg-transparent font-title font-normal
+             text-[#F8F8F8] absolute bottom-[15px] left-[40px]'>
+                2 Hours Ago
+            </div>
           
         </div>
         

@@ -7,6 +7,7 @@ import React, { useEffect, useState, useContext } from 'react';
 
 import { useCreateTeamMutation } from '../app/services/APISlice'
 import { NavBar } from '../components'
+import {TopComponent, LatestNews} from '../components'
 
 
 interface IProps {}
@@ -23,6 +24,14 @@ const Home: React.FC<IProps> = () => {
       </Head>
       <main>
       <NavBar/>
+     <div className='bg-[white] w-full flex flex-col justify-center items-center mt-[100px]'>
+       <TopComponent/>
+       <LatestNews/>
+    
+     </div>
+     
+      
+      
       </main>
     </>
   )

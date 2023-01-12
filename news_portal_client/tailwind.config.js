@@ -12,7 +12,7 @@ module.exports = {
       'sm': { 'max': '600px' },
       'md': { 'max': '720px' },
       'lg': { 'max': '1200px' },
-      'xl': { 'max': '1600px' },
+      'xl': { 'max': '1439px' },
       'xsm':{'min':'220px', 'max':'450px'}
       
     },
@@ -24,6 +24,7 @@ module.exports = {
       navLogo:['Raleway']
       },
       fontSize: {
+        'headingFont':['48px','56px'],
         'subTitleFont': ['16px', '19px'],
         'titleFont': ['30px', '35px'],
         'inputFont':['14px', '16px']

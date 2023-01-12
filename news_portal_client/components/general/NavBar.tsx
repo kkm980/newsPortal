@@ -19,7 +19,9 @@ interface IProps {
 const NavBar: React.FC<IProps> = () => {
 
   const Logo = () => {
+
     const [focused, setFocused] = useState(false);
+
     return (
       <div className='w-[90%] flex justify-between items-center font-navLogo font-[700] text-subTitleFont bg-[white]'>
         <div className='flex font-navLogo font-[700] text-subTitleFont bg-[white]'>
@@ -52,11 +54,10 @@ const NavBar: React.FC<IProps> = () => {
 
   return (
     <div className="w-full flex justify-center items-center
-      bg-[white]
-       min-h-[100px] fixed top-0 z-50 border border-[red]"
+      bg-[white] min-h-[100px] fixed top-0 z-50"
       onClick={(e: any) => { e.stopPropagation() }}
     >
-      <div className='w-[78%] sm:w-[95%] flex justify-between items-center bg-[white] text-[black]'>
+      <div className='w-[80%] sm:w-[95%] flex justify-between items-center bg-[white] text-[black]'>
 
         <Logo />
         <img src="/assets/logout1.svg" className='w-[20px] h-[20px] text-[black] cursor-pointer' />

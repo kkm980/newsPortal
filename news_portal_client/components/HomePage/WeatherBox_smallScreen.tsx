@@ -41,6 +41,7 @@ const WeatherBox_smallScreen: React.FC<IProps> = () => {
         )
     }
 
+    
     return (
         <div className={`w-[100%] h-[130px] pt-2 flex flex-row 
         justify-between bg-[white] text-[black] hidden md:flex`}>

@@ -8,45 +8,45 @@ import { useCreateTeamMutation } from '../../app/services/APISlice'
 
 
 interface IProps {
-   authStat:string
-   authFun:(obj:any)=>void
+  authStat: string
+  authFun: (obj: any) => void
 }
 
 
 const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
 
-  const [error, setError]=useState<any>({});
+  const [error, setError] = useState<any>({});
   const [authObj, setAuthObj] = useState<any>({})
 
-  const handleChange=(name:string,value:string)=>{
-    setAuthObj({...authObj, [name]:value})
+  const handleChange = (name: string, value: string) => {
+    setAuthObj({ ...authObj, [name]: value })
   }
 
   const checkErrorFun = () => {
     String(authObj.email)
-    .toLowerCase()
-    .match(
-      /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-    )
+      .toLowerCase()
+      .match(
+        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+      )
       ?
-        authObj.password != ""
-      ?
+      authObj.password != ""
+        ?
         authFun(authObj)
-      :
+        :
         setError({ password: "Please enter password to continue" })
       :
-        setError({ email: "Please enter correct email to continue" });
+      setError({ email: "Please enter correct email to continue" });
   }
 
-  useEffect(()=>{
-    
+  useEffect(() => {
+
     setError({});
 
     setAuthObj(
-      {email:"", password:""}
+      { email: "", password: "" }
     );
 
-  },[authStat])
+  }, [authStat])
 
   return (
 
@@ -78,7 +78,7 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
         name="email"
         value={authObj.email}
         onChange={(e: any) => {
-          setError({...error,email:""});
+          setError({ ...error, email: "" });
           handleChange(e.target.name, e.target.value);
         }}
       />
@@ -86,17 +86,19 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun }) => {
         <div className="font-subTitle font-[400px] bg-[white] text-[#444444] text-subTitleFont">
           Password
         </div>
-        <div className="font-subTitle font-[400px] bg-[white] text-[red] text-[14px] absolute top-[20px] left-[5px]">
+        <div className="font-subTitle font-[400px] bg-[white] text-[red] text-[14px] absolute 
+        top-[20px] left-[5px]">
           {error.password}
         </div>
       </div>
-      <input className={`w-[350px] xsm:w-[80%] h-[50px] p-2 px-4 my-2 bg-[white] outline-none rounded rounded-[5px] border 
-      border-[#E8E8E8] text-[black] text-inputFont font-subTitle ${error.password && "border border-[red]"}`}
+      <input className={`w-[350px] xsm:w-[80%] h-[50px] p-2 px-4 my-2 bg-[white] outline-none rounded
+       rounded-[5px] border border-[#E8E8E8] text-[black] text-inputFont font-subTitle
+        ${error.password && "border border-[red]"}`}
         type="password"
         name="password"
         value={authObj.password}
         onChange={(e: any) => {
-          setError({...error,password:""});
+          setError({ ...error, password: "" });
           handleChange(e.target.name, e.target.value);
         }}
       />

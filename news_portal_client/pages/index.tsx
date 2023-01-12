@@ -7,10 +7,10 @@ import React, { useEffect, useState, useContext } from 'react';
 
 import { useCreateTeamMutation } from '../app/services/APISlice'
 import { NavBar } from '../components'
-import {TopComponent, LatestNews} from '../components'
+import { TopComponent, LatestNews } from '../components'
 
 
-interface IProps {}
+interface IProps { }
 const inter = Inter({ subsets: ['latin'] })
 
 const Home: React.FC<IProps> = () => {
@@ -23,15 +23,11 @@ const Home: React.FC<IProps> = () => {
         <link rel="image" href="/assets/Thanos.jpg" />
       </Head>
       <main>
-      <NavBar/>
-     <div className='bg-[white] w-full flex flex-col justify-center items-center mt-[100px]'>
-       <TopComponent/>
-       <LatestNews/>
-    
-     </div>
-     
-      
-      
+        <NavBar />
+        <div className='bg-[white] w-full flex flex-col justify-center items-center mt-[100px]'>
+          <TopComponent />
+          <LatestNews />
+        </div>
       </main>
     </>
   )

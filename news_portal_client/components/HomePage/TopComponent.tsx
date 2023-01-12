@@ -9,6 +9,8 @@ import 'tailwindcss/tailwind.css'
 import { useCreateTeamMutation } from '../../app/services/APISlice'
 import TitleNews from './TitleNews'
 import WeatherBox from './WeatherBox'
+import WeatherBox_smallScreen from './WeatherBox_smallScreen'
+import TitleNews_smallScreen from './TitleNews_smallScreen'
 
 
 interface IProps {
@@ -19,9 +21,9 @@ interface IProps {
 const TopComponent: React.FC<IProps> = () => {
 
   return (
-      <div className={`w-[80%] border border-[blue] bg-[white] flex md:flex-col justify-between items-start`}>
-        <div className='hidden md:block'>dfg</div>
-        <div className='hidden md:block'>dfg</div>
+      <div className={`w-[80%] sm:w-[95%] bg-[white] flex md:flex-col justify-between items-start`}>
+        <WeatherBox_smallScreen/>
+        <TitleNews_smallScreen/>
         <TitleNews/>
         <WeatherBox/>
       </div>

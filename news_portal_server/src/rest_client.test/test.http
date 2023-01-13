@@ -1,0 +1,78 @@
+@host=http://localhost:8000
+
+
+###### USER ROUTES ######
+
+### create user ###
+POST {{host}}/auth/register
+content-type: application/json
+
+{   
+    "username":"abc",
+    "email": "abc",
+    "password": "abc"
+}
+
+
+### login user ###
+POST {{host}}/auth/login
+content-type: application/json
+
+{   
+    "email": "abc",
+    "password": "abc"
+}
+
+
+### check user ###
+POST {{host}}/auth/check
+content-type: application/json
+
+{   
+    "email": "abc"
+}
+
+
+
+###### LOCATION ROUTES ######
+
+### get location ###
+POST {{host}}/location
+content-type: application/json
+
+{   
+    "username": "res.name",
+    "address":"search_text"
+}
+
+
+
+###### NEWS ROUTES ######
+
+### get news data ###
+GET {{host}}/news
+content-type: application/json
+
+
+
+### get filtered news data ###
+GET {{host}}/news/getByFilter
+content-type: application/json
+
+{   
+    "filter": "MARS"
+}
+
+
+### get latest news ###
+GET {{host}}/news/latestNews
+content-type: application/json
+
+
+
+
+###### WEATHER ROUTES ######
+
+### get weather data ###
+GET {{host}}/weather
+content-type: application/json

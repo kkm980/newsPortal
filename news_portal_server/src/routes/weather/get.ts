@@ -1,13 +1,12 @@
-import { Request, Response } from 'express';
 import axios from 'axios';
-// import User from '../../db/models/Patient';
-import logger from '../../utils/logger'
+import { Request, Response } from 'express';
+
 import attempt from '../../middleware/attempt';
+import logger from '../../utils/logger';
 
 export default [
-
     attempt(async (req: Request, res: Response) => {
-        let responseData: any = []
+        let responseData: any = [];
         const response = await axios.get('https://api.openweathermap.org/data/3.0/onecall?', {
             params: {
                 lat: "33.44",
@@ -16,11 +15,10 @@ export default [
                 appid: '1a10a5d5c0726c1b2f09cf3c16f983ba',
             }
         });
-        responseData['data'] = response
+        responseData['data'] = response;
         res.status(200).json({
             response: responseData,
             length: responseData.length
         });
-
     })
 ];

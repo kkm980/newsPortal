@@ -15,5 +15,5 @@ export default (api: Express) => {
 
     // Server_check
     api.get('/', (req: Request, res: Response) => res.status(200)
-       .json({ message: "Hello from the news portal api." }));
+       .json({ message: 'Hello from the news portal api.' }));
 }

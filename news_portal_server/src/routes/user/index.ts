@@ -12,6 +12,6 @@ export default () => {
     r.post('/login', ...login);
     r.post('/signup', ...signup);
     // END ENDPOINTS [DO NOT MODIFY COMMENT!]
-
+    
     return r;
 }

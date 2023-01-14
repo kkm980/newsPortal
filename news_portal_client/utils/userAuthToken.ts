@@ -1,13 +1,13 @@
 
 export const saveUserToken = (token: string) => {
-    localStorage.setItem('Auth', token)
-}
+    localStorage.setItem('newsportal_auth', token);
+};
 
 export const deleteUserToken = () => {
-    localStorage.removeItem('Auth')
-}
+    localStorage.removeItem('newsportal_auth');
+};
 
 export const getUserToken = () => {
-    const token = localStorage.getItem('Auth')
-    return token
-}
+    const token = localStorage.getItem('newsportal_auth');
+    return token;
+};

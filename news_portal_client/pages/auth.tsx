@@ -1,52 +1,79 @@
-import Head from 'next/head'
-import styles from '../styles/Home.module.css'
-import 'tailwindcss/tailwind.css'
+import Head from 'next/head';
+import styles from '../styles/Home.module.css';
+import 'tailwindcss/tailwind.css';
 
-import React, { useEffect, useState, useContext } from 'react'
+import React, { useEffect, useState, useContext, useRef } from 'react';
+import { useRouter } from 'next/router';
 
-
-import { useCreateTeamMutation, useGetUsersQuery } from '../app/services/APISlice'
-import { AuthBox } from '../components'
+// import { useCreateTeamMutation, useGetUsersQuery } from '../app/services/APISlice'
+import { AuthBox } from '../components';
+import { useCreateUserMutation,useSigninUserMutation  } from '../app/services/APISlice';
+import { getUserToken, saveUserToken } from '../utils/userAuthToken';
+import { redirect } from 'next/dist/server/api-utils';
+// import { useNavigate } from 'react-router-dom';
 
 // import { useNavigate, useSearchParams } from 'react-router-dom'
 
 interface IProps {
-    setIsFetching: any
+    setIsFetching: unknown
 }
 
 const Auth: React.FC<IProps> = ({ setIsFetching }) => {
-    // const [searchParams] = useSearchParams()
-    // const navigate = useNavigate()
+    const router = useRouter();
+    const [authStat, setAuthStat] = useState('signup');
+    const [routeError, setRouteError] = useState<any>('');
+    const [signupSuccess, setSignupSuccess] = useState<any>(false);
+    const [createUser, { data:creatorData, isLoading:createLoading , error:creatorError}] = useCreateUserMutation();
+    const [loginUser, { data:loginData, isLoading:loginLoading, error:loginError }] = useSigninUserMutation();
 
-    // const { setisLoading } = useContext(AppContext)!
-
-    const x = useGetUsersQuery();
-    const { isError, isLoading, data } = useGetUsersQuery()
-
-    // const [token, setToken] = useState('')
-    // const [teamName, setTeamName] = useState('')
-    // const [error, setError] = useState(false)
-    const [authStat, setAuthStat] = useState("signup");
-    const authFun = (obj: any) => {
-        if (authStat === "signup") {
-
+    const authFun = (obj: {email:string, password:string}) => {
+        if (authStat === 'signup') { 
+            createUser(obj);
         }
-        else if (authStat === "login") {
-
+        else if (authStat === 'login') {
+            loginUser(obj);
         }
-    }
-    useEffect(() => {
-        console.log(data, "x")
-    }, [data])
+    };
+
+    useEffect(()=>{
+        
+    },[]);
+    useEffect(()=>{
+        console.log(loginData);
+        loginData?.jwtToken && saveUserToken(loginData.jwtToken);
+        router.push('/');
+    },[loginData]);
+
+    useEffect(()=>{
+        console.log(creatorError);
+        creatorError?.status==400 && setRouteError(creatorError?.data?.message);
+    },[creatorError]);
+
+    useEffect(()=>{
+        console.log(loginError);
+        loginError?.status==400 && setRouteError(loginError?.data?.message);
+        loginError?.status==404 && setRouteError(loginError?.data?.message);
+    },[loginError]);
+
+    useEffect(()=>{
+        console.log(creatorData);
+        creatorData?.user?._id && setSignupSuccess(true);
+        creatorData?.user?._id && setTimeout(function () {
+            setSignupSuccess(false);
+            setAuthStat('login');
+        }, 5000);
+        
+    },[creatorData]);
+    
 
     // useEffect(() => {
     //     const token = searchParams.get('token');
     //     setToken(token!)
     // }, [searchParams])
 
-    useEffect(() => {
-        setIsFetching(isLoading);
-    }, [isLoading, setIsFetching])
+    // useEffect(() => {
+    //     setIsFetching(isLoading);
+    // }, [isLoading, setIsFetching])
 
     // useEffect(() => {
     //     if (data) {
@@ -82,8 +109,13 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
                     </div>
 
                     <div className='w-[50%] md:w-[100%] h-[100vh] flex justify-center items-center relative'>
-
-                        <AuthBox {...{ authStat, authFun }} />
+                        <div>
+                            {signupSuccess && authStat=='signup' ? <div className='bg-[white] text-[blue] text-[40px] h-[350px] w-full
+                             flex justify-center items-center'>Signup successful, redirecting to Login</div> 
+                                :
+                                <AuthBox {...{ authStat, authFun, routeError, setRouteError }} /> }
+                        </div>
+                        
 
                         <div className='flex justify-center items-center
                           w-[100%] absolute bottom-[50px] text-[#616161]
@@ -92,16 +124,17 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
                             <div className='text-[#616161] md:text-[white] font-subTitle text-subTitleFont'
 
                             >
-                                {authStat === "signup" ? "Have an account?" : "Dont have an account?"}
+                                {authStat === 'signup' ? 'Have an account?' : 'Dont have an account?'}
                             </div>
 
                             <div className='ml-1 text-[#2F80ED]
                                  font-subTitle text-subTitleFont cursor-pointer'
-                                onClick={() => {
-                                    authStat === "signup" ? setAuthStat("login") : setAuthStat("signup")
-                                }}
+                            onClick={() => {
+                                authStat === 'signup' ? setAuthStat('login') : setAuthStat('signup');
+                                setRouteError('');
+                            }}
                             >
-                                {authStat === "signup" ? "Login now" : "Join free today"}
+                                {authStat === 'signup' ? 'Login now' : 'Join free today'}
                             </div>
 
                         </div>
@@ -111,8 +144,8 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
 
             </main>
         </>
-    )
-}
+    );
+};
 
 
 export default Auth;

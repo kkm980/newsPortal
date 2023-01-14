@@ -4,46 +4,51 @@
 ###### USER ROUTES ######
 
 ### create user ###
-POST {{host}}/auth/register
+POST {{host}}/user/signup
 content-type: application/json
 
 {   
-    "username":"abc",
-    "email": "abc",
+    "email":"abc@gmail.com",
     "password": "abc"
 }
 
 
 ### login user ###
-POST {{host}}/auth/login
+POST {{host}}/user/login
 content-type: application/json
 
 {   
-    "email": "abc",
+    "email": "abc@gmail.com",
     "password": "abc"
 }
+### should login the user correctly ###
 
-
-### check user ###
-POST {{host}}/auth/check
+POST {{host}}/user/login
 content-type: application/json
 
 {   
-    "email": "abc"
+    "email": "abcdefg@gmail.com",
+    "password": "abc"
 }
+### should return message that email or password is wrong ###
 
-
-
-###### LOCATION ROUTES ######
-
-### get location ###
-POST {{host}}/location
+POST {{host}}/user/login
 content-type: application/json
 
 {   
-    "username": "res.name",
-    "address":"search_text"
+    "email": "abc@gmail.com",
+    "password": "abcdef"
 }
+### should return message that email or password is wrong ###
+
+POST {{host}}/user/login
+content-type: application/json
+
+{   
+    "email": "a@gmail.com",
+    "password": "abc"
+}
+### should return message that user doesnot exist ###
 
 
 

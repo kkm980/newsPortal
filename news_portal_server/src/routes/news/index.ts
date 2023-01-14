@@ -4,7 +4,6 @@ import { Router } from 'express';
 import get from './get';
 import getByFilter from './getByFilter';
 import getLatestNews from './latestNews';
-// import post from './post';
 // END IMPORTS [DO NOT MODIFY COMMENT!]
 
 export default () => {

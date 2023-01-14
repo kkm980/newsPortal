@@ -1,14 +1,17 @@
-import { Router } from 'express';
+import {  Router } from 'express';
 
 // START IMPORTS [DO NOT MODIFY COMMENT!]
-import get from './get';
+import login  from  './login';
+import signup  from  './signup';
 // END IMPORTS [DO NOT MODIFY COMMENT!]
 
 export default () => {
     const r = Router();
+
     // START ENDPOINTS [DO NOT MODIFY COMMENT!]
-    r.get('/', ...get);
-    // r.post('/', ...post);
+    r.post('/login', ...login);
+    r.post('/signup', ...signup);
     // END ENDPOINTS [DO NOT MODIFY COMMENT!]
+
     return r;
 }

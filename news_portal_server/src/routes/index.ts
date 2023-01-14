@@ -2,12 +2,14 @@ import { Express, Request, Response } from 'express';
 
 // START IMPORTS [DO NOT MODIFY COMMENT!]
 import news from './news';
+import user from './user';
 import weather from './weather';
 // END IMPORTS [CIO:DO NOT MODIFY COMMENT!]
 
 export default (api: Express) => {
     // START RESOURCES [DO NOT MODIFY COMMENT!]
     api.use('/news', news());
+    api.use('/user', user());
 	api.use('/weather', weather());
 	// END RESOURCES [DO NOT MODIFY COMMENT!]
 

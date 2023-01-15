@@ -72,7 +72,9 @@ app.use('/weather', weatherApiLimiter);
 // configure routes
 routes(app);
 
-app.listen(port, async ()=>{
+let our_server=app.listen(port, async ()=>{
   logger.info(`listening on port http://localhost:${port}`);
   await connect();
 });
+
+export default our_server;

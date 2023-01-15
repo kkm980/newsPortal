@@ -249,6 +249,41 @@ export default [
                     "clouds": 97,
                     "pop": 0.84,
                     "rain": 4.49
+                },
+                {
+                    "dt": 1662030000,
+                    "sunrise": 1662007126,
+                    "sunset": 1662054835,
+                    "temp": {
+                        "day": 293.38,
+                        "min": 287.06,
+                        "max": 293.38,
+                        "night": 287.06,
+                        "eve": 289.01,
+                        "morn": 287.84
+                    },
+                    "feels_like": {
+                        "day": 293.31,
+                        "night": 287.01,
+                        "eve": 289.05,
+                        "morn": 287.85
+                    },
+                    "pressure": 1014,
+                    "humidity": 71,
+                    "weather": [
+                        {
+                            "id": 500,
+                            "main": "Rain",
+                            "description": "light rain",
+                            "icon": "10d"
+                        }
+                    ],
+                    "speed": 2.67,
+                    "deg": 60,
+                    "gust": 2.66,
+                    "clouds": 97,
+                    "pop": 0.84,
+                    "rain": 4.49
                 }
             ]
         };

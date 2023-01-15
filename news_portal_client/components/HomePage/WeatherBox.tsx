@@ -4,6 +4,7 @@ import styles from '../styles/Home.module.css';
 import React, { useEffect, useState, useContext } from 'react';
 import 'tailwindcss/tailwind.css';
 
+import SixDaysName from '../../utils/'
 
 interface IProps {
     weatherData:any
@@ -12,29 +13,34 @@ interface IProps {
 
 const WeatherBox: React.FC<IProps> = ({weatherData}) => {
 
-
+    useEffect(()=>{
+        weatherData && console.log(weatherData?.response?.list);
+    },[weatherData]);
     const WeatherChart = () => {
         return (
             <div className='w-[300px] lg:w-[200px] h-[250px] xl:h-[190px] mt-[30px] 
             xl:mt-[10px] lg:mt-[8px] bg-[white] flex flex-col justify-between items-center'>
-                <div className='w-[100%] bg-[white] flex justify-between items-center'>
-                    <div className='bg-[white] font-[700] text-[20px] lg:text-[14px] 
+                {weatherData?.response?.list?.map((e:any, i:number)=>(
+                    <div key={i} className='w-[100%] bg-[white] flex justify-between items-center'>
+                        <div className='bg-[white] font-[700] text-[20px] lg:text-[14px] 
                     text-[#7F7F7F] font-subTitle'>
                         Thursday
-                    </div>
-                    <div className='bg-[white] text-[black]'>
-                        <img src="/assets/sun.svg" className='lg:w-[14px] lg:h-[14px]' />
-                    </div>
-                    <div className='w-[70px] bg-[white] font-[700] text-[20px]  
+                        </div>
+                        <div className='bg-[white] text-[black]'>
+                            <img src="/assets/sun.svg" className='lg:w-[14px] lg:h-[14px]' />
+                        </div>
+                        <div className='w-[70px] bg-[white] font-[700] text-[20px]  
                     font-subTitle flex justify-between items-center'>
 
-                        <div className='font-[700] text-[20px]  
+                            <div className='font-[700] text-[20px]  
                     font-subTitle text-[black] lg:text-[14px]'>13&#176;</div>
-                        <div className='font-[700] text-[20px]  
+                            <div className='font-[700] text-[20px]  
                     font-subTitle text-[#7F7F7F] lg:text-[14px]'>11&#176;</div>
 
+                        </div>
                     </div>
-                </div>
+                ))}
+                
                 <div className='w-[100%] bg-[white] flex justify-between items-center'>
                     <div className='bg-[white] font-[700] text-[20px] lg:text-[14px] 
                     text-[#7F7F7F] font-subTitle'>

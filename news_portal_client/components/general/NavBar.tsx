@@ -8,18 +8,27 @@ import  { useRouter } from 'next/router';
 import { deleteUserToken } from '../../utils/userAuthToken';
 
 interface IProps {
- 
+    setFilterSearch_text:React.Dispatch<React.SetStateAction<string>>
 }
 
 
-const NavBar: React.FC<IProps> = () => {
+const NavBar: React.FC<IProps> = ({setFilterSearch_text}) => {
     const router = useRouter();
     const [signout, setSignout]=useState(false);
+    
+    useEffect(()=>{
+        signout===true && deleteUserToken();
+        signout===true && router.push('/auth');
+    },[signout]);
 
     const Logo = () => {
-        const router = useRouter();
         const [focused, setFocused] = useState(false);
         const [input, setInput]    = useState<string>('');
+        
+        useEffect(()=>{
+            // setFilterSearch_text(input);
+        },[input]);
+
         return (
             <div className='w-[90%] flex justify-between items-center font-navLogo font-[700]
        text-subTitleFont bg-[white]'>

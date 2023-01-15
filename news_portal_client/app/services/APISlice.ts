@@ -49,12 +49,12 @@ export const adminsAPI = createApi({
             providesTags: ['LatestNews'],
         }),
 
-        getFilterNews: builder.mutation<unknown, void>({
-            query: (query) => ({
+        getFilterNews: builder.mutation<unknown, any>({
+            query: ({search_text,page_num, page_size}) => ({
                 url: '/news/filterNews',
                 method: 'POST',
                 body: {
-                    query
+                    search_text,page_num, page_size
                 },
             }),
             transformResponse: (data: any) => {

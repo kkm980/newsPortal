@@ -32,12 +32,12 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
 
     useEffect(() => {
         if (getUserToken()) {
-             router.push('/');
+            router.push('/');
         }
     }, []);
     useEffect(()=>{
         loginData?.jwtToken && saveUserToken(loginData.jwtToken);
-       loginData?.jwtToken && router.push('/');
+        loginData?.jwtToken && router.push('/');
     },[loginData]);
 
     useEffect(()=>{
@@ -54,7 +54,7 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
         creatorData?.user?._id && setTimeout(function () {
             setSignupSuccess(false);
             setAuthStat('login');
-        }, 5000);
+        }, 15000);
         
     },[creatorData]);
     

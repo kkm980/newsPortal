@@ -5,7 +5,7 @@ import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState} from 'react';
 
 // eslint-disable-next-line linebreak-style
-import { useGetLatestNewsQuery, useGetNewsMutation } from '../app/services/APISlice';
+import { useGetFilterNewsMutation, useGetLatestNewsQuery, useGetNewsMutation } from '../app/services/APISlice';
 import { LoaderScreen, NavBar } from '../components';
 import { TopComponent, LatestNews } from '../components';
 import { useRouter } from 'next/router';
@@ -22,14 +22,15 @@ const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
     const router = useRouter();
     const { isError:hotTopicsError, isLoading:hotTopicsLoading, data:latestNewsData } = useGetLatestNewsQuery();
     const [getAllNewsfromDB, { data:allNewsDatafromDB, isError:allNewsfromDBError, isLoading:allNewsfromDBLoading}] = useGetNewsMutation();
-    const [getFilteredNewsfromDB, { data:allFilteredNewsDatafromDB, isError:allFilteredNewsfromDBError, isLoading:allFilteredNewsfromDBLoading}] = useGetNewsMutation();
+    const [getFilteredNewsfromDB, { data:allFilteredNewsDatafromDB, isError:allFilteredNewsfromDBError, isLoading:allFilteredNewsfromDBLoading}] = useGetFilterNewsMutation();
 
     const page_size=5;
     const [page_num, setPage_num]=useState(1);
     const [to_be_shownArray, setTo_be_shownArray]=useState<any>([]);
     const [totalDatafromDB, setTotalDatafromDB]=useState(0);
     const [load, setLoad] = useState(false);
-
+    const [filterSearch_text, setFilterSearch_text] =useState('');
+    const [filter, setFilter] =useState(false);
 
     useEffect(() => {
         !getUserToken() && router.push('/auth');
@@ -38,19 +39,39 @@ const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
 
 
     const getNewsOnScroll=()=>{
-        getAllNewsfromDB({page_num, page_size});
+        !filterSearch_text && getAllNewsfromDB({page_num, page_size});
     };
    
 
+
     useEffect(()=>{
-        getAllNewsfromDB({page_num, page_size});
-    },[]);
+        filter===true && setTo_be_shownArray([]);
+        filter===true && setPage_num(1);
+        filter===false && setPage_num(1);
+        filter===false && getAllNewsfromDB({page_num, page_size:10});
+    },[filter]);
+
+    useEffect(()=>{
+        (Math.floor(filterSearch_text.length/3))>=1 &&
+        getFilteredNewsfromDB({filterSearch_text, page_num, page_size});
+
+        filterSearch_text.length===0 &&
+        setFilter(false);
+    },[filterSearch_text]);
 
     useEffect(() => {
-        setTotalDatafromDB(allNewsDatafromDB?.response?.totalResults);
-        setPage_num(Math.ceil((to_be_shownArray.length + allNewsDatafromDB?.response?.articles?.length)/page_size));
-        allNewsDatafromDB && setTo_be_shownArray([...to_be_shownArray,...allNewsDatafromDB?.response?.articles]);
-    },[allNewsDatafromDB]);
+        !filterSearch_text ? setTotalDatafromDB(allNewsDatafromDB?.response?.totalResults)
+            :
+            setTotalDatafromDB(allFilteredNewsDatafromDB?.response?.totalResults);
+
+        !filterSearch_text ? setPage_num(Math.ceil((to_be_shownArray.length + allNewsDatafromDB?.response?.articles?.length) / page_size))
+            :
+            setPage_num(Math.ceil((to_be_shownArray.length + allFilteredNewsDatafromDB?.response?.articles?.length) / page_size));
+
+        !filterSearch_text ? allNewsDatafromDB && setTo_be_shownArray([...to_be_shownArray, ...allNewsDatafromDB?.response?.articles])
+            :
+            allNewsDatafromDB && setTo_be_shownArray([...to_be_shownArray, ...allFilteredNewsDatafromDB?.response?.articles]);
+    }, [allNewsDatafromDB,allFilteredNewsDatafromDB ]);
 
 
     useEffect(()=>{
@@ -73,7 +94,7 @@ const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
             </Head>
             <main>
                 {load && <LoaderScreen/>}
-                <NavBar/>
+                <NavBar {...{setFilterSearch_text}}/>
                 <div className='bg-[white] w-full flex flex-col justify-center items-center mt-[100px]'>
                     <TopComponent {...{latestNewsData}}/>
                     <LatestNews {...{to_be_shownArray,totalDatafromDB, getNewsOnScroll }}/>

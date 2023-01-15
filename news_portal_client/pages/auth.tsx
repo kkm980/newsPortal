@@ -5,7 +5,7 @@ import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 
-import { AuthBox } from '../components';
+import { AuthBox, LoaderScreen } from '../components';
 import { useCreateUserMutation, useSigninUserMutation } from '../app/services/APISlice';
 import { getUserToken, saveUserToken } from '../utils/userAuthToken';
 
@@ -68,6 +68,8 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
             </Head>
 
             <main>
+
+                {(createLoading || loginLoading) && <LoaderScreen/>}
                 <div className={`w-full h-[100vh] 
                 flex justify-between md:justify-center items-center md:bg-no-repeat md:bg-cover md:bg-center
                 md:bg-[url('/assets/auth_bg_img.png')]`}>

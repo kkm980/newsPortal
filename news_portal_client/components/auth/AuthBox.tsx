@@ -75,13 +75,13 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun, routeError, setRouteErro
           ${error.email ? 'text-[red]' : 'text-[black]'}
         `}
 
-                type="email"
-                name="email"
-                value={authObj.email}
-                onChange={(e: any) => {
-                    setError({ ...error, email: '' });
-                    handleChange(e.target.name, e.target.value);
-                }}
+            type="email"
+            name="email"
+            value={authObj.email}
+            onChange={(e: any) => {
+                setError({ ...error, email: '' });
+                handleChange(e.target.name, e.target.value);
+            }}
             />
             <div className='font-subTitle font-[400px] bg-[white] text-[#444444] text-subTitleFont mt-7 relative'>
                 <div className="font-subTitle font-[400px] bg-[white] text-[#444444] text-subTitleFont">
@@ -95,13 +95,13 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun, routeError, setRouteErro
             <input className={`w-[350px] xsm:w-[80%] h-[50px] p-2 px-4 my-2 bg-[white] outline-none rounded
        rounded-[5px] border border-[#E8E8E8] text-[black] text-inputFont font-subTitle
         ${error.password && 'border border-[red]'}`}
-                type="password"
-                name="password"
-                value={authObj.password}
-                onChange={(e: any) => {
-                    setError({ ...error, password: '' });
-                    handleChange(e.target.name, e.target.value);
-                }}
+            type="password"
+            name="password"
+            value={authObj.password}
+            onChange={(e: any) => {
+                setError({ ...error, password: '' });
+                handleChange(e.target.name, e.target.value);
+            }}
             />
 
             <div className='w-[350px] xsm:w-[80%] flex xsm:flex-col justify-between items-center xsm:items-start
@@ -111,7 +111,7 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun, routeError, setRouteErro
                     <input className="rounded-full h-4 w-4 border
         border-[#E8E8E8] bg-[#E8E8E8] checked:bg-[#2F80ED] checked:border-blue-600 
         focus:outline-none transition duration-200 mr-2 cursor-pointer"
-                        type="radio" />
+                    type="radio" />
                     <div className='font-subTitle text-inputFont bg-[white] text-[black]'>Remember me</div>
                 </div>
                 <div className='w-[auto] font-subTitle text-inputFont bg-[white] text-[#2F80ED] cursor-pointer'>
@@ -125,9 +125,9 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun, routeError, setRouteErro
          ${((!authObj.email) || (!authObj.password)) ? 'cursor-not-allowed' : 'cursor-pointer'}
          ${((!authObj.email) || (!authObj.password)) ? 'bg-[gray]' : 'bg-[#2F80ED]'}
        `}
-                onClick={() => {
-                    authObj.email && authObj.password ? checkErrorFun() : <></>;
-                }}
+            onClick={() => {
+                authObj.email && authObj.password ? checkErrorFun() : <></>;
+            }}
             >
                 {authStat === 'signup' ? 'Signup' : 'Login now'}
             </div>

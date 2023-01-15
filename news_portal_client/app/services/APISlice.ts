@@ -1,15 +1,11 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
-// import moment from 'moment'
-// import { Stats } from '../../hooks/useStats'
 import getBaseURL from '../../utils/getBaseURL';
-// import { updateDataController } from '../../utils/updateDataController'
 import { getUserToken } from '../../utils/userAuthToken';
 
 export const adminsAPI = createApi({
     reducerPath: 'adminsAPI',
 
     baseQuery: fetchBaseQuery({
-        // baseUrl: getBaseURL('localhost'),
         baseUrl: 'http://localhost:8000',
 
         prepareHeaders: (headers) => {

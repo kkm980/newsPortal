@@ -2,11 +2,11 @@
 import Head from 'next/head';
 import styles from '../styles/Home.module.css';
 import 'tailwindcss/tailwind.css';
-import React, { useEffect} from 'react';
+import React, { useEffect, useState} from 'react';
 
 // eslint-disable-next-line linebreak-style
-import { useGetLatestNewsQuery, useGetNewsQuery } from '../app/services/APISlice';
-import { NavBar } from '../components';
+import { useGetLatestNewsQuery, useGetNewsMutation } from '../app/services/APISlice';
+import { LoaderScreen, NavBar } from '../components';
 import { TopComponent, LatestNews } from '../components';
 import { useRouter } from 'next/router';
 import { getUserToken } from '../utils/userAuthToken';
@@ -21,10 +21,48 @@ interface IProps {
 const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
     const router = useRouter();
     const { isError:hotTopicsError, isLoading:hotTopicsLoading, data:latestNewsData } = useGetLatestNewsQuery();
-    const { isError:allNewsError, isLoading:allNewsLoading, data:allNewsData } = useGetNewsQuery();
+    const [getAllNewsfromDB, { data:allNewsDatafromDB, isError:allNewsfromDBError, isLoading:allNewsfromDBLoading}] = useGetNewsMutation();
+    const [getFilteredNewsfromDB, { data:allFilteredNewsDatafromDB, isError:allFilteredNewsfromDBError, isLoading:allFilteredNewsfromDBLoading}] = useGetNewsMutation();
+
+    const page_size=5;
+    const [page_num, setPage_num]=useState(1);
+    const [to_be_shownArray, setTo_be_shownArray]=useState<any>([]);
+    const [totalDatafromDB, setTotalDatafromDB]=useState(0);
+    const [load, setLoad] = useState(false);
+
+
     useEffect(() => {
-      !getUserToken() && router.push('/auth');
+        !getUserToken() && router.push('/auth');
     },[]);
+
+
+
+    const getNewsOnScroll=()=>{
+        getAllNewsfromDB({page_num, page_size});
+    };
+   
+
+    useEffect(()=>{
+        getAllNewsfromDB({page_num, page_size});
+    },[]);
+
+    useEffect(() => {
+        setTotalDatafromDB(allNewsDatafromDB?.response?.totalResults);
+        setPage_num(Math.ceil((to_be_shownArray.length + allNewsDatafromDB?.response?.articles?.length)/page_size));
+        allNewsDatafromDB && setTo_be_shownArray([...to_be_shownArray,...allNewsDatafromDB?.response?.articles]);
+    },[allNewsDatafromDB]);
+
+
+    useEffect(()=>{
+        setLoad(allNewsfromDBLoading);
+    },[allNewsfromDBLoading]);
+    useEffect(()=>{
+        setLoad(hotTopicsLoading);
+    },[hotTopicsLoading]);
+    useEffect(()=>{
+        setLoad(allFilteredNewsfromDBLoading);
+    },[allFilteredNewsfromDBLoading]);
+
     return (
         <>
             <Head>
@@ -34,10 +72,11 @@ const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
                 <link rel="image" href="/assets/Thanos.jpg" />
             </Head>
             <main>
+                {load && <LoaderScreen/>}
                 <NavBar/>
                 <div className='bg-[white] w-full flex flex-col justify-center items-center mt-[100px]'>
                     <TopComponent {...{latestNewsData}}/>
-                    <LatestNews {...{allNewsData}}/>
+                    <LatestNews {...{to_be_shownArray,totalDatafromDB, getNewsOnScroll }}/>
                 </div>
             </main>
         </>

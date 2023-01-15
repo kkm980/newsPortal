@@ -25,13 +25,19 @@ export const adminsAPI = createApi({
 
     endpoints: (builder) => ({
        
-        getNews: builder.query<unknown, void>({
-            query: () => '/news',
+        getNews: builder.mutation<unknown, any>({
+            query: ({page_num, page_size}) => ({
+                url: '/news',
+                method: 'POST',
+                body: {
+                    page_num,
+                    page_size
+                },
+            }),
             transformResponse: (data: unknown) => {
                 const response = data;
                 return response;
             },
-            providesTags: ['AllNews'],
         }),
 
         getLatestNews: builder.query<unknown, void>({
@@ -86,7 +92,7 @@ export const adminsAPI = createApi({
 });
 
 export const {
-    useGetNewsQuery,
+    useGetNewsMutation,
     useGetLatestNewsQuery,
     useGetFilterNewsMutation,
     useCreateUserMutation,

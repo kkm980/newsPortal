@@ -14,7 +14,7 @@ const TitleNews_smallScreen: React.FC<IProps> = (latestNewsData) => {
     const [extractableData, setExtractableData]=useState<any>({});
 
     useEffect(()=>{
-        latestNewsData && setExtractableData({...latestNewsData?.latestNewsData?.latestNewsData?.response});
+        latestNewsData && setExtractableData({...latestNewsData?.response});
     },[latestNewsData]);
 
     return (

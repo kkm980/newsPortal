@@ -15,7 +15,7 @@ interface IProps {
 }
 
 
-const TopComponent: React.FC<IProps> = (latestNewsData) => {
+const TopComponent: React.FC<IProps> = ({latestNewsData}) => {
     return (
         <div className={'w-[80%] sm:w-[95%] bg-[white] flex md:flex-col justify-between items-start'}>
             <WeatherBox_smallScreen/>

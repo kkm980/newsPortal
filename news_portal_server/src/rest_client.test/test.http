@@ -8,10 +8,31 @@ POST {{host}}/user/signup
 content-type: application/json
 
 {   
-    "email":"abc@gmail.com",
-    "password": "abc"
+    "email":"krishna@gmail.com",
+    "password": "abcdf"
 }
 
+
+### create user ###
+
+POST {{host}}/user/signup
+content-type: application/json
+
+{
+    "password": "abc"
+}
+### must give form validation error###
+
+
+### create user ###
+
+POST {{host}}/user/signup
+content-type: application/json
+
+{
+    "email": "abc@gmail.com"
+}
+### must give form validation error###
 
 ### login user ###
 POST {{host}}/user/login

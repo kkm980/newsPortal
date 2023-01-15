@@ -10,8 +10,8 @@ export default () => {
     const r = Router();
 
     // START ENDPOINTS [DO NOT MODIFY COMMENT!]
-    r.get('/', ...get);
-    r.get('/getByFilter', ...getByFilter);
+    r.post('/', ...get);
+    r.post('/getByFilter', ...getByFilter);
     r.get('/latestNews', ...getLatestNews);
     // END ENDPOINTS [DO NOT MODIFY COMMENT!]
 

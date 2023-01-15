@@ -1,3 +1,5 @@
+// our own console component
+
 import dayjs from 'dayjs';
 import logger from 'pino';
 

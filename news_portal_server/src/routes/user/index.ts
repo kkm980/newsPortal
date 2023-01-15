@@ -1,5 +1,5 @@
 import {  Router } from 'express';
-
+const {check,validationResult}=require('express-validator');
 // START IMPORTS [DO NOT MODIFY COMMENT!]
 import login  from  './login';
 import signup  from  './signup';
@@ -12,6 +12,6 @@ export default () => {
     r.post('/login', ...login);
     r.post('/signup', ...signup);
     // END ENDPOINTS [DO NOT MODIFY COMMENT!]
-    
+
     return r;
 }

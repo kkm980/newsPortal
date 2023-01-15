@@ -1,9 +1,10 @@
 import { CorsOptions } from 'cors';
 const allowedOrigins = ['http://localhost:3000'];
 
+
+// ***** // defining our CORS function to allow only from localhost:3000 // ***** //
 export default {
     origin: (origin: string, callback: any) => {
-        // console.log(origin)
         if (allowedOrigins.indexOf(origin) !== -1 || !origin) {
             callback(null, true);
         } else {

@@ -11,7 +11,7 @@ import NewsCard from './NewsCard';
 interface IProps {
     to_be_shownArray:any
     totalDatafromDB:number
-    getNewsOnScroll:()=>void
+    // getNewsOnScroll:()=>void
 }
 
 const AllNewsBlock: React.FC<IProps> = ({to_be_shownArray,totalDatafromDB, getNewsOnScroll }) => {

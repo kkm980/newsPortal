@@ -61,7 +61,95 @@ Application where user can see news headlines and weather updates after logging 
 - Send 6 days weather data to user
 - JWT generation and maintaining user session
 
+
+
+
+## 🛠 Tools and Packages used
+
+### Front End packages-
+- dependency packages- 
+ -- Next, React, Redux, Redux-toolkit, Tailwind, PostCSS, Typescript
+ 
+ - Other 3rd party packages-
+ -- ESLint, React-icons, react-infinite-scroll-component, date-format, axios
+
+### Back End packages-
+- dependency packages-
+ -- Express, nodemon, mongoose, typescript
+
+- Other 3rd party packages-
+-- Axios, bcrypt, config, cors, dayjs, express-rate-limit, express-validator, helmet, jsonwebtoken, pino, pino-pretty, swagger-ui-express, xss-clean, yamljs, zod
+
+### Tools-
+- local tools-
+-- VSC, Node[version 18.13.0], npm[version 8.19.3], git[version 2.39.0]
+
+- remote tools
+-- Google inspect, lighthouse, time-travel, gitlab
+
+
 ## Usage/Examples
+
+
+-REST CLIENT test file
+```javascript
+@host=http://localhost:8000
+
+
+###### USER ROUTES ######
+
+### create user ###
+POST {{host}}/user/signup
+content-type: application/json
+
+{   
+    "email":"krishnakkkk@gmail.com",
+    "password": "abcdf"
+}
+
+
+### create user ###
+
+POST {{host}}/user/signup
+content-type: application/json
+
+{
+    "password": "abc"
+}
+### must give form validation error###
+
+
+### create user ###
+
+POST {{host}}/user/signup
+content-type: application/json
+
+{
+    "email": "abc@gmail.com"
+}
+### must give form validation error###
+
+### login user ###
+POST {{host}}/user/login
+content-type: application/json
+
+{   
+    "email": "abc@gmail.com",
+    "password": "abc"
+}
+### should login the user correctly ###
+
+POST {{host}}/user/login
+content-type: application/json
+
+{   
+    "email": "abcdefg@gmail.com",
+    "password": "abc"
+}
+### should return message that email or password is wrong ###
+```
+
+
 -rendering the weather cards
 ```javascript
 /* eslint-disable @typescript-eslint/no-explicit-any */

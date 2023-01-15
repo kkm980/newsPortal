@@ -15,6 +15,7 @@ info:
 schemes: [http, https]
 
 paths: 
+# initial route to check if server is running
 
     /:
       get:

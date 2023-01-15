@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-empty-interface */
 import styles from '../styles/Home.module.css'
 
 import React, { useEffect, useState, useContext } from 'react';

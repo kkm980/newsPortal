@@ -7,7 +7,7 @@ import { getUserToken } from '../../utils/userAuthToken';
 
 export const adminsAPI = createApi({
     reducerPath: 'adminsAPI',
-    
+
     baseQuery: fetchBaseQuery({
         // baseUrl: getBaseURL('localhost'),
         baseUrl: 'http://localhost:8000',
@@ -20,13 +20,13 @@ export const adminsAPI = createApi({
     }),
 
     tagTypes: [
-        'LatestNews','AllNews'
+        'LatestNews', 'AllNews'
     ],
 
     endpoints: (builder) => ({
-       
+
         getNews: builder.mutation<unknown, any>({
-            query: ({page_num, page_size}) => ({
+            query: ({ page_num, page_size }) => ({
                 url: '/news',
                 method: 'POST',
                 body: {
@@ -43,21 +43,29 @@ export const adminsAPI = createApi({
         getLatestNews: builder.query<unknown, void>({
             query: () => '/news/latestNews',
             transformResponse: (data: unknown) => {
-                const response:unknown = data;
+                const response: unknown = data;
                 return response;
             },
             providesTags: ['LatestNews'],
         }),
 
         getFilterNews: builder.mutation<unknown, any>({
-            query: ({search_text,page_num, page_size}) => ({
+            query: ({ search_text, page_num, page_size }) => ({
                 url: '/news/filterNews',
                 method: 'POST',
                 body: {
-                    search_text,page_num, page_size
+                    search_text, page_num, page_size
                 },
             }),
             transformResponse: (data: any) => {
+                const response = data;
+                return response;
+            },
+        }),
+
+        getWeather: builder.query<unknown, void>({
+            query: () => '/weather',
+            transformResponse: (data: unknown) => {
                 const response = data;
                 return response;
             },
@@ -95,7 +103,8 @@ export const {
     useGetNewsMutation,
     useGetLatestNewsQuery,
     useGetFilterNewsMutation,
+    useGetWeatherQuery,
     useCreateUserMutation,
     useSigninUserMutation
- 
+
 } = adminsAPI;

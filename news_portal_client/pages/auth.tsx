@@ -6,7 +6,7 @@ import React, { useEffect, useState, useContext, useRef } from 'react';
 import { useRouter } from 'next/router';
 
 import { AuthBox } from '../components';
-import { useCreateUserMutation,useSigninUserMutation  } from '../app/services/APISlice';
+import { useCreateUserMutation, useSigninUserMutation } from '../app/services/APISlice';
 import { getUserToken, saveUserToken } from '../utils/userAuthToken';
 
 interface IProps {
@@ -18,11 +18,11 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
     const [authStat, setAuthStat] = useState('signup');
     const [routeError, setRouteError] = useState<any>('');
     const [signupSuccess, setSignupSuccess] = useState<any>(false);
-    const [createUser, { data:creatorData, isLoading:createLoading , error:creatorError}] = useCreateUserMutation();
-    const [loginUser, { data:loginData, isLoading:loginLoading, error:loginError }] = useSigninUserMutation();
+    const [createUser, { data: creatorData, isLoading: createLoading, error: creatorError }] = useCreateUserMutation();
+    const [loginUser, { data: loginData, isLoading: loginLoading, error: loginError }] = useSigninUserMutation();
 
-    const authFun = (obj: {email:string, password:string}) => {
-        if (authStat === 'signup') { 
+    const authFun = (obj: { email: string, password: string }) => {
+        if (authStat === 'signup') {
             createUser(obj);
         }
         else if (authStat === 'login') {
@@ -35,29 +35,29 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
             router.push('/');
         }
     }, []);
-    useEffect(()=>{
+    useEffect(() => {
         loginData?.jwtToken && saveUserToken(loginData.jwtToken);
         loginData?.jwtToken && router.push('/');
-    },[loginData]);
+    }, [loginData]);
 
-    useEffect(()=>{
-        creatorError?.status==400 && setRouteError(creatorError?.data?.message);
-    },[creatorError]);
+    useEffect(() => {
+        creatorError?.status == 400 && setRouteError(creatorError?.data?.message);
+    }, [creatorError]);
 
-    useEffect(()=>{
-        loginError?.status==400 && setRouteError(loginError?.data?.message);
-        loginError?.status==404 && setRouteError(loginError?.data?.message);
-    },[loginError]);
+    useEffect(() => {
+        loginError?.status == 400 && setRouteError(loginError?.data?.message);
+        loginError?.status == 404 && setRouteError(loginError?.data?.message);
+    }, [loginError]);
 
-    useEffect(()=>{
+    useEffect(() => {
         creatorData?.user?._id && setSignupSuccess(true);
         creatorData?.user?._id && setTimeout(function () {
             setSignupSuccess(false);
             setAuthStat('login');
         }, 15000);
-        
-    },[creatorData]);
-    
+
+    }, [creatorData]);
+
     return (
         <>
             <Head>
@@ -77,12 +77,12 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
 
                     <div className='w-[50%] md:w-[100%] h-[100vh] flex justify-center items-center relative'>
                         <div>
-                            {signupSuccess && authStat=='signup' ? <div className='bg-[white] text-[blue] text-[40px] h-[350px] w-full
-                             flex justify-center items-center'>Signup successful, redirecting to Login</div> 
+                            {signupSuccess && authStat == 'signup' ? <div className='bg-[white] text-[blue] text-[40px] h-[350px] w-full
+                             flex justify-center items-center'>Signup successful, redirecting to Login</div>
                                 :
-                                <AuthBox {...{ authStat, authFun, routeError, setRouteError }} /> }
+                                <AuthBox {...{ authStat, authFun, routeError, setRouteError }} />}
                         </div>
-                        
+
 
                         <div className='flex justify-center items-center
                           w-[100%] absolute bottom-[50px] text-[#616161]

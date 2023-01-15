@@ -1,15 +1,16 @@
-import styles from '../styles/Home.module.css'
+/* eslint-disable react/no-unescaped-entities */
+import styles from '../styles/Home.module.css';
 
-import React, { useEffect, useState, useContext } from 'react'
-import 'tailwindcss/tailwind.css'
+import React, { useEffect, useState, useContext } from 'react';
+import 'tailwindcss/tailwind.css';
 
 
 interface IProps {
-
+    weatherData:any
 }
 
 
-const WeatherBox: React.FC<IProps> = () => {
+const WeatherBox: React.FC<IProps> = ({weatherData}) => {
 
 
     const WeatherChart = () => {
@@ -107,8 +108,8 @@ const WeatherBox: React.FC<IProps> = () => {
                     </div>
                 </div>
             </div>
-        )
-    }
+        );
+    };
 
     return (
         <div className={`w-[28%] xl:w-[35%] lg:w-[40%] mt-[45px] bg-[white] flex flex-col items-end 
@@ -134,12 +135,12 @@ const WeatherBox: React.FC<IProps> = () => {
                 </div>
 
                 <WeatherChart />
-                
+
             </div>
 
         </div>
-    )
-}
+    );
+};
 
 export default WeatherBox;
 

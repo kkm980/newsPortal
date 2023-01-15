@@ -5,7 +5,7 @@ import 'tailwindcss/tailwind.css';
 import React, { useEffect, useState} from 'react';
 
 // eslint-disable-next-line linebreak-style
-import { useGetFilterNewsMutation, useGetLatestNewsQuery, useGetNewsMutation } from '../app/services/APISlice';
+import { useGetFilterNewsMutation, useGetLatestNewsQuery, useGetNewsMutation, useGetWeatherQuery } from '../app/services/APISlice';
 import { LoaderScreen, NavBar } from '../components';
 import { TopComponent, LatestNews } from '../components';
 import { useRouter } from 'next/router';
@@ -21,6 +21,7 @@ interface IProps {
 const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
     const router = useRouter();
     const { isError:hotTopicsError, isLoading:hotTopicsLoading, data:latestNewsData } = useGetLatestNewsQuery();
+    const { isError:weatherError, isLoading:weatherLoading, data:weatherData } = useGetWeatherQuery();
     const [getAllNewsfromDB, { data:allNewsDatafromDB, isError:allNewsfromDBError, isLoading:allNewsfromDBLoading}] = useGetNewsMutation();
     const [getFilteredNewsfromDB, { data:allFilteredNewsDatafromDB, isError:allFilteredNewsfromDBError, isLoading:allFilteredNewsfromDBLoading}] = useGetFilterNewsMutation();
 
@@ -81,6 +82,9 @@ const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
         setLoad(hotTopicsLoading);
     },[hotTopicsLoading]);
     useEffect(()=>{
+        setLoad(weatherLoading);
+    },[weatherLoading]);
+    useEffect(()=>{
         setLoad(allFilteredNewsfromDBLoading);
     },[allFilteredNewsfromDBLoading]);
 
@@ -96,7 +100,7 @@ const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
                 {load && <LoaderScreen/>}
                 <NavBar {...{setFilterSearch_text}}/>
                 <div className='bg-[white] w-full flex flex-col justify-center items-center mt-[100px]'>
-                    <TopComponent {...{latestNewsData}}/>
+                    <TopComponent {...{latestNewsData, weatherData}}/>
                     <LatestNews {...{to_be_shownArray,totalDatafromDB, getNewsOnScroll }}/>
                 </div>
             </main>

@@ -1,6 +1,3 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 
 import React, { useEffect, useState, useContext } from 'react';
@@ -8,12 +5,9 @@ import React, { useEffect, useState, useContext } from 'react';
 import 'tailwindcss/tailwind.css';
 import dateSubtractor from '../../../utils/dateSubtractor';
 
-
-
 interface IProps {
   cardData:any
 }
-
 
 const NewsCard: React.FC<IProps> = (cardData:any) => {
 

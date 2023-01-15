@@ -1,14 +1,9 @@
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 
 import React, { useEffect, useState, useContext } from 'react';
 
 import 'tailwindcss/tailwind.css';
 import dateSubtractor from '../../utils/dateSubtractor';
-// import { useCreateTeamMutation } from '../../app/services/APISlice';
-
 
 interface IProps {
   latestNewsData:unknown
@@ -20,9 +15,6 @@ const TitleNews_smallScreen: React.FC<IProps> = (latestNewsData) => {
 
     useEffect(()=>{
         latestNewsData && setExtractableData({...latestNewsData?.latestNewsData?.latestNewsData?.response});
-        // latestNewsData && console.log('dates--',dateSubtractor(latestNewsData));
-
-    // setImg(`${extractableData?.urlToImage}`);
     },[latestNewsData]);
 
     return (

@@ -5,7 +5,7 @@ import '../styles/globals.css';
 import type { AppProps } from 'next/app';
 import { Provider } from 'react-redux';
 import { store } from '../store';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import 'tailwindcss/tailwind.css';
 
 import LoaderScreen from '../components/general/loaderScreen';

@@ -1,29 +1,30 @@
 /* eslint-disable linebreak-style */
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 import 'tailwindcss/tailwind.css';
-import React, { useEffect, useState, useContext } from 'react';
+import React, { useEffect} from 'react';
 
 // eslint-disable-next-line linebreak-style
 import { useGetLatestNewsQuery, useGetNewsQuery } from '../app/services/APISlice';
 import { NavBar } from '../components';
 import { TopComponent, LatestNews } from '../components';
+import { useRouter } from 'next/router';
+import { getUserToken } from '../utils/userAuthToken';
 
 
 // eslint-disable-next-line @typescript-eslint/no-empty-interface
 interface IProps {
   pageProps:any
   setIsFetching:any
- }
-const inter = Inter({ subsets: ['latin'] });
+}
 
 const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
-  
+    const router = useRouter();
     const { isError:hotTopicsError, isLoading:hotTopicsLoading, data:latestNewsData } = useGetLatestNewsQuery();
     const { isError:allNewsError, isLoading:allNewsLoading, data:allNewsData } = useGetNewsQuery();
-    
+    useEffect(() => {
+      !getUserToken() && router.push('/auth');
+    },[]);
     return (
         <>
             <Head>

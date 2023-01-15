@@ -4,8 +4,6 @@ import styles from '../styles/Home.module.css';
 import React, { useEffect, useState, useContext } from 'react';
 
 import 'tailwindcss/tailwind.css';
-// import { useCreateTeamMutation } from '../../app/services/APISlice'
-
 
 interface IProps {
   authStat: string

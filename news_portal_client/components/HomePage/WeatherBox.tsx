@@ -1,12 +1,7 @@
-import Head from 'next/head'
-import Image from 'next/image'
-import { Inter } from '@next/font/google'
 import styles from '../styles/Home.module.css'
 
 import React, { useEffect, useState, useContext } from 'react'
-
 import 'tailwindcss/tailwind.css'
-import { useCreateTeamMutation } from '../../app/services/APISlice'
 
 
 interface IProps {
@@ -111,11 +106,6 @@ const WeatherBox: React.FC<IProps> = () => {
 
                     </div>
                 </div>
-
-
-
-
-
             </div>
         )
     }
@@ -143,8 +133,8 @@ const WeatherBox: React.FC<IProps> = () => {
                     </div>
                 </div>
 
-
                 <WeatherChart />
+                
             </div>
 
         </div>

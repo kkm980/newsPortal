@@ -1,6 +1,6 @@
-import {useEffect} from 'react'
+import {useEffect} from 'react';
 const getBaseURL = (x: string) => {
-    let baseUrl: string="http://localhost:8000";
+    const baseUrl='http://localhost:8000';
     // useEffect(() => {
     //     const hostHas = (x: string) => window.location.hostname.includes(x)
     //     if (hostHas(x)) {
@@ -12,7 +12,7 @@ const getBaseURL = (x: string) => {
 
     // }, [])
 
-    return baseUrl
-}
+    return baseUrl;
+};
 
-export default getBaseURL
+export default getBaseURL;

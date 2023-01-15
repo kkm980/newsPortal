@@ -1,16 +1,11 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
 import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
-import Link from 'next/link';
 import React, { useEffect, useState } from 'react';
 import '../../styles/Nav.module.css';
 import 'tailwindcss/tailwind.css';
-
-import { AiOutlineSearch } from 'react-icons/ai';
-import { BiLogOut } from 'react-icons/bi';
-import { IconBase } from 'react-icons';
+import  { useRouter } from 'next/router';
+import { deleteUserToken } from '../../utils/userAuthToken';
 
 interface IProps {
  
@@ -18,10 +13,13 @@ interface IProps {
 
 
 const NavBar: React.FC<IProps> = () => {
+    const router = useRouter();
+    const [signout, setSignout]=useState(false);
+
     const Logo = () => {
+        const router = useRouter();
         const [focused, setFocused] = useState(false);
         const [input, setInput]    = useState<string>('');
-
         return (
             <div className='w-[90%] flex justify-between items-center font-navLogo font-[700]
        text-subTitleFont bg-[white]'>
@@ -73,7 +71,10 @@ const NavBar: React.FC<IProps> = () => {
         );
     };
 
-
+    useEffect(()=>{
+        signout===true && deleteUserToken();
+        signout===true && router.push('/auth');
+    },[signout]);
     return (
         <div className="w-full flex justify-center items-center
       bg-[white] min-h-[100px] fixed top-0 z-50"
@@ -81,7 +82,10 @@ const NavBar: React.FC<IProps> = () => {
         >
             <div className='w-[80%] sm:w-[95%] flex justify-between items-center bg-[white] text-[black]'>
                 <Logo />
-                <img src="/assets/logout1.svg" className='w-[20px] h-[20px] text-[black] cursor-pointer' />
+                <img onClick={()=>{
+                    setSignout(true);
+                }} src="/assets/logout1.svg" className='w-[20px] h-[20px] text-[black] cursor-pointer'/>
+                
             </div>
         </div>
     );

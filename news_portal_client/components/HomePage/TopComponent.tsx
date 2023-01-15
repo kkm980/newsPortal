@@ -1,13 +1,9 @@
 /* eslint-disable @typescript-eslint/no-empty-interface */
-import Head from 'next/head';
-import Image from 'next/image';
-import { Inter } from '@next/font/google';
 import styles from '../styles/Home.module.css';
 
 import React, { useEffect, useState, useContext } from 'react';
 
 import 'tailwindcss/tailwind.css';
-// import { useCreateTeamMutation } from '../../app/services/APISlice';
 import TitleNews from './TitleNews';
 import WeatherBox from './WeatherBox';
 import WeatherBox_smallScreen from './WeatherBox_smallScreen';

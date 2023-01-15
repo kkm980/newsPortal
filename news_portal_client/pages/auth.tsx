@@ -86,9 +86,9 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
                         </div>
 
 
-                        <div className='flex justify-center items-center
+                        <div className={`flex justify-center items-center
                           w-[100%] absolute bottom-[50px] text-[#616161]
-                          font-subTitle text-subTitleFont'>
+                          font-subTitle text-subTitleFont`}>
 
                             <div className='text-[#616161] md:text-[white] font-subTitle text-subTitleFont'
 
@@ -96,8 +96,8 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
                                 {authStat === 'signup' ? 'Have an account?' : 'Dont have an account?'}
                             </div>
 
-                            <div className='ml-1 text-[#2F80ED]
-                                 font-subTitle text-subTitleFont cursor-pointer'
+                            <div className={`ml-1 text-[#2F80ED]
+                                 font-subTitle text-subTitleFont cursor-pointer `}
                             onClick={() => {
                                 authStat === 'signup' ? setAuthStat('login') : setAuthStat('signup');
                                 setRouteError('');

@@ -50,10 +50,14 @@ const AuthBox: React.FC<IProps> = ({ authStat, authFun, routeError, setRouteErro
 
     return (
 
-        <div className={'w-[350px] md:w-[400px] xsm:w-[80%] bg-[white] xsm:p-4 md:p-8 relative'}>
-            {routeError ? <div className='font-subTitle bg-[white] font-[400px] text-[red] text-subTitleFont xsm:text-[1rem]'>{routeError}</div> : <div className='font-subTitle bg-[white] font-[400px] text-[#121221] text-subTitleFont xsm:text-[1rem]'>
+        <div className={'w-[350px] md:w-[400px] xsm:w-[100%] bg-[white] xsm:p-4 md:p-8 relative'}>
+            {routeError ? <div className='font-subTitle bg-[white] font-[400px] text-[red] text-subTitleFont xsm:text-[1rem]'>
+                {routeError}
+            </div>
+                :
+                <div className='font-subTitle bg-[white] font-[400px] text-[#121221] text-subTitleFont xsm:text-[1rem]'>
                 Welcome {authStat === 'signup' ? '' : 'back'}
-            </div>}
+                </div>}
 
             <div className='font-bold font-title bg-[white] text-[#121221] text-titleFont xsm:text-[18px] mt-1'>
                 {authStat === 'signup' ? 'Signup to your account' : 'Login to your account'}

@@ -1,0 +1,323 @@
+swagger: "2.0"
+info:
+  title: News Portal API
+  description: This is the documentation by Krishna Kant
+  version: "1.0"
+  contact:
+     email: kantkrishna751@gmail.com
+  liscence:
+     name: News Portal
+     url: "http://localhost:8000/"
+  serves:
+     -url: "http://localhost:8000/"
+     description: This is my local server
+
+schemes: [http, https]
+
+paths: 
+
+    /:
+      get:
+       summary: Returns a message object with message as hello from the news portal API
+       description: It is just returning a Hello message object to check server is running.
+       responses:
+         200:
+           description: Success
+           schema:
+            type: object
+            properties:
+              message:
+                type: string
+         400:
+           description: User Error
+         500:
+           description: Internal Server Error
+
+# News routes
+
+#  get all top headlines
+    /news:
+      post:
+       summary: Returns object of news with total news
+       description: Return object with keys and values
+       produces: 
+          - application/json
+       consumes:
+           - application/json
+       parameters:
+          - in: header
+            name: authorization
+            required: true
+            schema: 
+              type: string
+          - in: body
+            name: page_num
+            schema: 
+              type: string
+          - in: body
+            name: page_size
+            schema: 
+              type: string 
+       responses:
+         200:
+           description: Success
+           schema:
+            type: object
+            properties:
+              responses:
+               type: object
+               properties:
+                status:
+                  type: string
+                totalResults:
+                  type: number
+                articles:
+                  type: array
+                  items: 
+                   type: object
+         400:
+           description: User Error
+         500:
+           description: Internal Server Error
+
+#  get all news based on search strings
+
+    /news/getByFilter:
+      post:
+       summary: Returns object of news based on search strings set by user
+       description: Return object with keys and values
+       produces: 
+          - application/json
+       consumes:
+           - application/json
+       parameters:
+          - in: header
+            name: authorization
+            required: true
+            schema: 
+              type: string
+          - in: body
+            name: page_num
+            schema: 
+              type: string
+          - in: body
+            name: page_size
+            schema: 
+              type: string 
+          - in: body
+            name: q
+            schema: 
+              type: string 
+       responses:
+         200:
+           description: Success
+           schema:
+            type: object
+            properties:
+              responses:
+               type: object
+               properties:
+                status:
+                  type: string
+                totalResults:
+                  type: number
+                articles:
+                  type: array
+                  items: 
+                   type: object
+         400:
+           description: User Error
+         500:
+           description: Internal Server Error
+
+#  get all top headlines
+
+    /news/latestNews:
+      post:
+       summary: Returns object of one news which is latest
+       description: Return object with keys and values
+       produces: 
+          - application/json
+       consumes:
+           - application/json
+       parameters:
+          - in: header
+            name: authorization
+            required: true
+            schema: 
+              type: string
+          - in: body
+            name: page_num
+            schema: 
+              type: string
+          - in: body
+            name: page_size
+            schema: 
+              type: string 
+          - in: body
+            name: q
+            schema: 
+              type: string 
+       responses:
+         200:
+           description: Success
+           schema:
+            type: object
+            properties:
+              responses:
+               type: object
+               properties:
+                status:
+                  type: string
+                totalResults:
+                  type: number
+                articles:
+                  type: array
+                  items: 
+                   type: object
+         400:
+           description: User Error
+         500:
+           description: Internal Server Error
+
+# weather route
+    /weather:
+      get:
+       summary: Returns object of responses with  weather details
+       description: Return object with keys and values
+       produces: 
+          - application/json
+       consumes:
+           - application/json
+       parameters:
+          - in: header
+            name: authorization
+            required: true
+            schema: 
+              type: string
+       responses:
+         200:
+           description: Success
+           schema:
+            type: object
+            properties:
+              responses:
+               type: object
+               properties:
+                city:
+                  type: object
+                cod:
+                  type: string
+                message:
+                  type: number
+                cnt: 
+                  type: number
+                list:
+                  type: array
+                  items:
+                    type: object
+         400:
+           description: User Error
+         500:
+           description: Internal Server Error
+
+# login route
+    /user/login:
+      post:
+       summary: Returns object of user details and jwt token for session management
+       description: Return object with keys and values
+       produces: 
+          - application/json
+       consumes:
+           - application/json
+       parameters:
+          - in: body
+            name: email
+            required: true
+            schema: 
+              type: string
+          - in: body
+            name: password
+            required: true
+            schema: 
+              type: string 
+       responses:
+         200:
+           description: Success
+           schema:
+            type: object
+            properties:
+              responses:
+               type: object
+               properties:
+                user:
+                  type: object
+                  properties:
+                   _id: 
+                     type: string
+                   email: 
+                     type: string
+                   password: 
+                     type: string
+                   createdAt: 
+                     type: string
+                   updatedAt: 
+                     type: string
+                jwtToken:
+                  type: string
+         400:
+           description: User Error
+         500:
+           description: Internal Server Error
+
+# signup route 
+    /user/signup:
+      post:
+       summary: Returns object of user details with encrypted password
+       description: Return object with keys and values
+       produces: 
+          - application/json
+       consumes:
+           - application/json
+       parameters:
+          - in: body
+            name: email
+            required: true
+            schema: 
+              type: string
+          - in: body
+            name: password
+            required: true
+            schema: 
+              type: string 
+       responses:
+         200:
+           description: Success
+           schema:
+            type: object
+            properties:
+              responses:
+               type: object
+               properties:
+                user:
+                  type: object
+                  properties:
+                   _id: 
+                     type: string
+                   email: 
+                     type: string
+                   password: 
+                     type: string
+                   createdAt: 
+                     type: string
+                   updatedAt: 
+                     type: string
+         400:
+           description: User Error
+         500:
+           description: Internal Server Error
+
+
+
+
+

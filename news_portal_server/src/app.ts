@@ -5,6 +5,9 @@ import express from 'express';
 const mongoSanitize = require('express-mongo-sanitize');
 const helmet = require('helmet');
 var xss = require('xss-clean');
+
+const swaggerUI=require('swagger-ui-express');
+const YAML=require('yamljs');
 // ***** // end import of dependencies // ***** //
 
 // ***** // import of modules // ***** //
@@ -12,7 +15,9 @@ import corsOptions from './config/corsOptions';
 import routes from './routes';
 import connect from './utils/connect';
 import logger from './utils/logger';
-import rateLimit from 'express-rate-limit'
+import rateLimit from 'express-rate-limit';
+
+const swaggerJsDocs=YAML.load('./api.yaml');
 // ***** // end import of modules // ***** //
 
 
@@ -39,6 +44,10 @@ app.use(cors(corsOptions));
 
 // ***** // sanitization against xss attacks // ***** //
 app.use(xss());
+
+
+// ***** // Swagger initiation // ***** //
+app.use('/api-docs', swaggerUI.serve, swaggerUI.setup(swaggerJsDocs));
 
 // ***** // limit the number of requests per user for specific routes // ***** //
 const newsApiLimiter = rateLimit({

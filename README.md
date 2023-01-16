@@ -1,4 +1,3 @@
-
 # News Portal full stack web application[MERN]
 
 Application where user can see news headlines and weather updates after logging in
@@ -56,10 +55,11 @@ Application where user can see news headlines and weather updates after logging 
 **Server:** [Node, Express, Typescript, MongoDB]
 - Allow server connection only with our client_frontend using CORS customed blocker function
 - Adding extra layer of security by adding HTTP headers using /*HELMET*/
-- Sanitization against XSS attacks
-- Limiting the number of requests for specific routes from a given user to stop malicious activity
-- Protection against HTTP parameter pollution attacks
+- Sanitization against /*XSS*/ attacks
+- Limiting the /*number of requests*/ for specific routes from a given user to stop malicious activity
+- Protection against HTTP parameter /*pollution*/ attacks
 - Check for unique user at signup request, check for real user at all other requests by jwt
+- Check for proper email type at time of signup and password strength checker(optional)
 - User session validation before fetching news, weather data
 - Input email, password validation
 - Hashing user's password before posting on DB to make password non-vulnerable at time of any potential DB hack
@@ -371,4 +371,3 @@ const AllNewsBlock: React.FC<IProps> = ({to_be_shownArray,totalDatafromDB, getNe
 export default AllNewsBlock;
 
 ```
-

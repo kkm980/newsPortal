@@ -76,14 +76,14 @@ content-type: application/json
 ###### NEWS ROUTES ######
 
 ### get news data ###
-GET {{host}}/news
+POST {{host}}/news
 content-type: application/json
-
-
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJpZCI6IjYzYzMwNGNhMTZkZWE0ZTc5NTU2NWRiNyIsImlhdCI6MTY3MzgyOTEyNX0.FSZ1ai8SbskSnMY62lRRtt_9hqMCPrvW_0oMzXoq6_c
 
 ### get filtered news data ###
-GET {{host}}/news/getByFilter
+POST {{host}}/news/getByFilter
 content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJpZCI6IjYzYzMwNGNhMTZkZWE0ZTc5NTU2NWRiNyIsImlhdCI6MTY3MzgyOTEyNX0.FSZ1ai8SbskSnMY62lRRtt_9hqMCPrvW_0oMzXoq6_c
 
 {   
     "filter": "MARS"
@@ -93,7 +93,7 @@ content-type: application/json
 ### get latest news ###
 GET {{host}}/news/latestNews
 content-type: application/json
-
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJpZCI6IjYzYzMwNGNhMTZkZWE0ZTc5NTU2NWRiNyIsImlhdCI6MTY3MzgyOTEyNX0.FSZ1ai8SbskSnMY62lRRtt_9hqMCPrvW_0oMzXoq6_c
 
 
 
@@ -102,3 +102,4 @@ content-type: application/json
 ### get weather data ###
 GET {{host}}/weather
 content-type: application/json
+authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJhakBnbWFpbC5jb20iLCJpZCI6IjYzYzMwNGNhMTZkZWE0ZTc5NTU2NWRiNyIsImlhdCI6MTY3MzgyOTEyNX0.FSZ1ai8SbskSnMY62lRRtt_9hqMCPrvW_0oMzXoq6_c

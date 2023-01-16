@@ -10,12 +10,13 @@ interface IProps {
 }
 
 
-const TitleNews_smallScreen: React.FC<IProps> = (latestNewsData) => {
+const TitleNews_smallScreen: React.FC<IProps> = ({latestNewsData}) => {
     const [extractableData, setExtractableData]=useState<any>({});
 
     useEffect(()=>{
-        latestNewsData && setExtractableData({...latestNewsData?.response});
+        latestNewsData && setExtractableData(latestNewsData?.response);
     },[latestNewsData]);
+
 
     return (
         <div className={'w-[100%] bg-[white] text-[black] hidden md:block'}>

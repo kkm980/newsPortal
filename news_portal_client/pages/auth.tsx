@@ -54,7 +54,7 @@ const Auth: React.FC<IProps> = ({ setIsFetching }) => {
         creatorData?.user?._id && setTimeout(function () {
             setSignupSuccess(false);
             setAuthStat('login');
-        }, 15000);
+        }, 4000);
 
     }, [creatorData]);
 

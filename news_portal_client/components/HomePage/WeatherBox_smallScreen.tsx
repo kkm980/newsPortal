@@ -38,7 +38,7 @@ const WeatherBox_smallScreen: React.FC<IProps> = ({weatherData}) => {
             <div className='w-[65px] h-[115px] bg-[white] text-[black]
         flex flex-col items-center justify-between p-1 py-3 rounded rounded-[18px]'>
                 <div className='font-subTitle text-[black] text-[12px] font-bold'>
-                    {getSixDaysList()[props.i]==='Thursday'?'Thurs':getSixDaysList()[props.i]}
+                    {getSixDaysList()[props.i]==='Thursday'?'Thurs':(getSixDaysList()[props.i]).substring(0,3)}
                 </div>
                 <img src="/assets/small_screen_sun.svg" />
                 <div className='font-subTitle text-[black] text-[12px] font-bold'>

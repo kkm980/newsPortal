@@ -30,10 +30,13 @@ export default [
                 {
                     params: {
                         country: 'us',
-                        sortBy: 'popularity',
-                        apiKey: api_key
+                        sortBy: 'publishedAt',
+                        apiKey: api_key,
                     },
                 }
+
+
+
             );
             //4. send response accordingly
             res.status(200).json({

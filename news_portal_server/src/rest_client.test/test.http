@@ -8,8 +8,8 @@ POST {{host}}/user/signup
 content-type: application/json
 
 {   
-    "email":"krishnakkkk@gmail.com",
-    "password": "abcdf"
+    "email":"krishnakantmishra980@gmail.com",
+    "password": "hellokk2"
 }
 
 

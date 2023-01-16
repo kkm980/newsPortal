@@ -102,6 +102,10 @@ const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
                 <div className='bg-[white] w-full flex flex-col justify-center items-center mt-[100px]'>
                     <TopComponent {...{latestNewsData, weatherData}}/>
                     <LatestNews {...{to_be_shownArray,totalDatafromDB, getNewsOnScroll }}/>
+                    <div className='bg-[#F8F8F8] text-[#949494] text-[16px] w-[100%] 
+                    h-[80px] flex justify-center items-center'>
+                        Copyright 2021 News Portal
+                    </div>
                 </div>
             </main>
         </>

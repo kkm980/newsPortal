@@ -104,7 +104,7 @@ const Home: React.FC<IProps> = (pageProps, setIsFetching) => {
                     <LatestNews {...{to_be_shownArray,totalDatafromDB, getNewsOnScroll }}/>
                     <div className='bg-[#F8F8F8] text-[#949494] text-[16px] w-[100%] 
                     h-[80px] flex justify-center items-center'>
-                        Copyright 2021 News Portal
+                        Copyright 2023 News Portal
                     </div>
                 </div>
             </main>

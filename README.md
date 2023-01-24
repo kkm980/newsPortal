@@ -13,7 +13,6 @@ Application where user can see news headlines and weather updates after logging 
 
 - https://drive.google.com/drive/folders/1-qkZBD9NLxbn_wtqY8YFRmC6lhwD6ohd?usp=sharing
 
-**Server:** Node, Express, Typescript, MongoDB
 
 
 ## Run on localhost
